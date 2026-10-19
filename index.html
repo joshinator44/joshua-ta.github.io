@@ -61,6 +61,57 @@ a.frame:hover{background:var(--saber,#3fd6f2)}
 
 .skill h3{margin:0 0 14px;font-family:'Silkscreen',monospace;font-size:11px;font-weight:400;letter-spacing:0.15em;color:#9aa1bd}
 .skill p{margin:0;font-size:18px;line-height:1.6;color:#e9ebf5}
+
+/* kinetic type (hero name) */
+.kt-word{display:inline-block;white-space:nowrap}
+.kt-ch{display:inline-block;will-change:transform}
+
+/* ascii space-battle band */
+.ascii{margin:0;font-family:'Geist Mono',ui-monospace,monospace;font-weight:400;white-space:pre;line-height:1;user-select:none;-webkit-user-select:none}
+.ascii-band{position:relative;overflow:hidden;padding:6px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+#hyper{font-size:clamp(9px,1.1vw,13px);line-height:1.15;color:#3a4160}
+.h-s1{color:#2e3554}.h-s2{color:#5d6590}.h-s3{color:#c9d2ff}.h-sh{color:#e9ebf5}.h-ck{color:var(--saber,#3fd6f2)}.h-fl{color:#ffd166}.h-lz{color:#ff5c86}.h-tie{color:#9aa1bd}
+@media (max-width:520px){#hyper{font-size:9px}}
+
+/* split-flap boards */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.flapboard{--fw:.86em;--fh:1.38em;--fg:.12em}
+.flaps{display:inline-flex;gap:var(--fg);vertical-align:middle}
+.flap{position:relative;display:block;flex:0 0 auto;width:var(--fw);height:var(--fh);perspective:5em;background:#0a0c18;box-shadow:0 0 0 1px #262c47,0 2px 0 1px #03040a}
+.flap>span{position:absolute;left:0;right:0;height:50%;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.flap .t{top:0;background:linear-gradient(#1b2039,#141830);transform-origin:50% 100%}
+.flap .b{bottom:0;background:linear-gradient(#10142a,#0c0f1e);transform-origin:50% 0}
+.flap i{position:absolute;left:0;right:0;height:200%;line-height:var(--fh);text-align:center;font-style:normal;white-space:pre}
+.flap .t i{top:0}
+.flap .b i{bottom:0}
+.flap::after{content:'';position:absolute;z-index:3;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:#05060c;box-shadow:-1px 0 0 #3a4160,1px 0 0 #3a4160}
+.flap .fold{display:none;z-index:2}
+.flap .t.fold{background:linear-gradient(#20263f,#171b33)}
+.flap .b.fold{transform:rotateX(90deg)}
+.flap.flipping .fold{display:block}
+/* hero highlights: split-flap in a cockpit-console housing (Falcon-style) */
+#feats{--fw:.8em;--fh:1.45em;--fg:.1em;position:relative;align-self:flex-start;display:inline-flex;align-items:center;gap:.55em;margin:30px 0 0;padding:.45em .55em .5em;font-family:'Geist Mono',ui-monospace,monospace;font-weight:500;font-size:clamp(10px,3.3vw,22px);color:#8ae8f9;
+  background:radial-gradient(circle at .35em .35em,#3a4160 .09em,transparent .1em),radial-gradient(circle at calc(100% - .35em) .35em,#3a4160 .09em,transparent .1em),radial-gradient(circle at .35em calc(100% - .35em),#3a4160 .09em,transparent .1em),radial-gradient(circle at calc(100% - .35em) calc(100% - .35em),#3a4160 .09em,transparent .1em),linear-gradient(#181c2b,#0d0f19);
+  border:1px solid #2e3554;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -2px 0 rgba(0,0,0,.5),0 .7em 1.5em -.5em rgba(0,0,0,.85),0 0 2.2em -.6em rgba(63,214,242,.25);
+  transform:perspective(900px) rotateY(12deg) rotateX(6deg);transform-origin:0 50%}
+#feats::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 2px,rgba(63,214,242,.05) 2px 3px)}
+#feats .flaps{padding:.18em;background:#05060c;box-shadow:inset 0 1px 3px rgba(0,0,0,.9),0 0 0 1px #1c2138}
+#feats .flap{perspective:3em;background:#060912;box-shadow:0 0 0 1px #1f3348,0 1px 0 1px #05060c,0 2px 3px 1px rgba(0,0,0,.6)}
+#feats .flap .t{background:linear-gradient(#0f1a2a,#0b1422);box-shadow:inset 0 1px 0 rgba(138,232,249,.08)}
+#feats .flap .b{background:linear-gradient(#09111d,#070c16)}
+#feats .flap .t.fold{background:linear-gradient(#132136,#0e192a)}
+#feats .flap::after{height:1px;margin-top:0;background:rgba(3,4,10,.8);box-shadow:none}
+#feats .flap i{letter-spacing:0;text-shadow:0 0 .35em rgba(63,214,242,.75),0 0 .08em rgba(138,232,249,.9)}
+.fx-leds{display:flex;flex-direction:column;gap:.22em}
+.fx-leds b{display:block;width:.32em;height:.32em;background:#2a2f44;box-shadow:inset 0 0 0 1px rgba(0,0,0,.4)}
+.fx-leds b.r{background:#ff4f6d;box-shadow:0 0 .4em #ff4f6d}
+.fx-leds b.a{background:#ffd166;box-shadow:0 0 .4em rgba(255,209,102,.8)}
+.fx-leds b.g{background:#7ee787;box-shadow:0 0 .4em rgba(126,231,135,.7)}
+.fx-count{font-size:.55em;line-height:1.2;color:#ffd166;letter-spacing:.06em;text-align:right;text-shadow:0 0 .5em rgba(255,209,102,.5)}
+.fx-count small{display:block;font-size:.8em;color:#5d6590;text-shadow:none}
+@media (max-width:560px){.fx-leds,.fx-count{display:none}}
+@media (prefers-reduced-motion: reduce){#feats{transform:none}}
+.stat-n .flaps{font-size:.8em}
 </style>
 </head>
 <body>
@@ -94,18 +145,7 @@ a.frame:hover{background:var(--saber,#3fd6f2)}
     <div id="name" style="position:relative; align-self:flex-start; clip-path:inset(-20% 100% -20% 0);">
       <h1 style="margin:0; font-family:'Pixelify Sans',sans-serif; font-weight:700; font-size:clamp(56px,11vw,168px); line-height:1; letter-spacing:0.01em; color:#ffffff; text-shadow:0 3px 0 var(--saber,#3fd6f2), 0 -3px 0 var(--saber,#3fd6f2), 3px 0 0 var(--saber,#3fd6f2), -3px 0 0 var(--saber,#3fd6f2), 3px 3px 0 var(--saber,#3fd6f2), -3px -3px 0 var(--saber,#3fd6f2), 3px -3px 0 var(--saber,#3fd6f2), -3px 3px 0 var(--saber,#3fd6f2);">Joshua Ta</h1>
     </div>
-  </div>
-
-  <div style="position:relative; z-index:2; display:flex; align-items:center; padding:0 clamp(20px,4vw,56px); max-width:1240px; width:100%; margin:8px auto 56px;">
-    <button id="saber" title="click me" style="all:unset; cursor:pointer; flex-shrink:0; display:block; line-height:0;">
-      <img id="hilt" alt="lightsaber hilt" style="width:132px; height:48px; image-rendering:pixelated; display:block;">
-    </button>
-    <div style="width:min(640px,55vw); height:24px;">
-      <div id="blade" style="width:0%; height:24px; position:relative; clip-path:polygon(0 0, calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px, 100% 18px, calc(100% - 6px) 18px, calc(100% - 6px) 100%, 0 100%);">
-        <div id="hum" style="position:absolute; inset:0; background:var(--saber,#3fd6f2);"></div>
-        <div style="position:absolute; left:0; right:6px; top:6px; bottom:6px; background:#ffffff;"></div>
-      </div>
-    </div>
+    <div id="feats">San Diego VEX winner</div>
   </div>
 
   <div style="position:relative; z-index:2; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:32px 48px; padding:0 clamp(20px,4vw,56px) 72px; max-width:1240px; width:100%; margin:0 auto;">
@@ -125,6 +165,7 @@ a.frame:hover{background:var(--saber,#3fd6f2)}
   </div>
 </header>
 
+<div class="ascii-band" aria-hidden="true"><pre id="hyper" class="ascii"></pre></div>
 
 <section id="projects" style="max-width:1240px; margin:0 auto; padding:88px clamp(20px,4vw,56px) 64px;">
   <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:64px; padding-bottom:20px; border-bottom:2px dashed #262c47;">
@@ -439,16 +480,6 @@ a.frame:hover{background:var(--saber,#3fd6f2)}
     '..mmmmdd..',
     '...dddd...',
   ], { m: '#d8dbe8', d: '#9a9fb6' });
-  $('hilt').src = px([
-    '..........kkrrkk......',
-    'kkkkkkkkkkkkkkkkkkkkkk',
-    'kllgkgkgkgkgllllllkllk',
-    'klggkgkgkgkgllgggllggk',
-    'kgggkbkbkbkbgggggggggk',
-    'kbbbkbkbkbkbbbbbbbkbbk',
-    'kkkkkkkkkkkkkkkkkkkkkk',
-    '...kkkk.........kk....',
-  ], { k: '#0b0d16', l: '#e4e9f0', g: '#9aa4b5', b: '#545e70', r: '#ff4f6d' });
 
   // ---- headshot: crop to a square around the face ----
   const img = new Image();
@@ -459,28 +490,6 @@ a.frame:hover{background:var(--saber,#3fd6f2)}
     $('face').src = c.toDataURL('image/jpeg', 0.9);
   };
   img.src = 'assets/headshot.png';
-
-  // ---- lightsaber ----
-  const blade = $('blade'), hum = $('hum');
-  let lit = false, humAnim = null;
-  const startHum = () => {
-    if (humAnim) humAnim.cancel();
-    if (reduced || !lit) return;
-    humAnim = hum.animate([{ background: 'var(--saber)' }, { background: 'var(--saber2)' }],
-      { duration: 280, iterations: Infinity, direction: 'alternate', easing: 'steps(1, end)' });
-  };
-  const ignite = first => {
-    lit = true;
-    blade.animate([{ width: '0%' }, { width: '100%' }],
-      { duration: reduced ? 0 : 650, delay: first && !reduced ? 500 : 0, easing: 'steps(22, end)', fill: 'forwards' });
-    setTimeout(startHum, reduced ? 0 : (first ? 1150 : 650));
-  };
-  const retract = () => {
-    lit = false; if (humAnim) humAnim.cancel();
-    blade.animate([{ width: '100%' }, { width: '0%' }], { duration: reduced ? 0 : 400, easing: 'steps(14, end)', fill: 'forwards' });
-  };
-  $('saber').addEventListener('click', () => (lit ? retract() : ignite(false)));
-  ignite(true);
 
   // ---- intro + ambient animation ----
   $('name').animate(
@@ -497,6 +506,248 @@ a.frame:hover{background:var(--saber,#3fd6f2)}
   // ---- scroll depth meter ----
   const depth = $('depth');
   window.addEventListener('scroll', () => { depth.textContent = Math.round(window.scrollY / 40) + ' LY'; }, { passive: true });
+
+  // ---- kinetic type: name letters hop as the cursor passes near (mouse only) ----
+  const h1 = document.querySelector('#name h1');
+  if (h1 && !reduced && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const text = h1.textContent;
+    h1.setAttribute('aria-label', text);
+    h1.textContent = '';
+    text.split(/(\s+)/).forEach(part => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) { h1.appendChild(document.createTextNode(' ')); return; }
+      const w = document.createElement('span');
+      w.className = 'kt-word'; w.setAttribute('aria-hidden', 'true');
+      for (const ch of part) {
+        const c = document.createElement('span');
+        c.className = 'kt-ch'; c.textContent = ch;
+        w.appendChild(c);
+      }
+      h1.appendChild(w);
+    });
+    const chars = Array.from(h1.querySelectorAll('.kt-ch'));
+    let mx = -1e4, my = -1e4, pending = false;
+    const LIFT = 15, STEP = 3;
+    const frame = () => {
+      pending = false;
+      chars.forEach(c => {
+        const r = c.getBoundingClientRect();
+        const R = Math.max(90, r.height * 1.1);
+        const d = Math.hypot(mx - (r.left + r.width / 2), my - (r.top + r.height / 2));
+        const k = Math.max(0, 1 - d / R);
+        const lift = Math.round((k * k * LIFT) / STEP) * STEP;
+        c.style.transform = lift ? `translateY(${-lift}px)` : '';
+      });
+    };
+    const queue = () => { if (!pending) { pending = true; requestAnimationFrame(frame); } };
+    window.addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; queue(); }, { passive: true });
+    document.addEventListener('pointerleave', () => { mx = my = -1e4; queue(); });
+    window.addEventListener('scroll', () => { if (mx > -1e4) queue(); }, { passive: true });
+  }
+
+  // ---- ascii: X-wing chasing a TIE through a starfield ----
+  const esc = ch => (ch === '<' ? '&lt;' : ch === '>' ? '&gt;' : ch === '&' ? '&amp;' : ch);
+  const paint = (chars, cls, cols, rows) => {
+    let out = '';
+    for (let y = 0; y < rows; y++) {
+      let x = 0;
+      while (x < cols) {
+        const k = cls[y * cols + x]; let run = '';
+        while (x < cols && cls[y * cols + x] === k) run += esc(chars[y * cols + x++]);
+        out += k ? `<span class="${k}">${run}</span>` : run;
+      }
+      if (y < rows - 1) out += '\n';
+    }
+    return out;
+  };
+  // throttled animation loop that only runs while el is on screen
+  const loop = (el, fps, tick) => {
+    let on = false, raf = 0, last = 0;
+    const step = t => {
+      raf = requestAnimationFrame(step);
+      if (t - last < 1000 / fps) return;
+      last = t; tick();
+    };
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !on) { on = true; raf = requestAnimationFrame(step); }
+      else if (!e.isIntersecting && on) { on = false; cancelAnimationFrame(raf); }
+    }).observe(el);
+  };
+  (() => {
+    const pre = $('hyper'), ROWS = 7;
+    const SHIP = [
+      ' \\____===-',
+      '  \\\\',
+      '=[[O]]=====>',
+      '  //',
+      ' /----===-',
+    ];
+    const TIE = ['|\\ /|', '|-o-|', '|/ \\|'];
+    const shipCls = c => (c === 'O' ? 'h-ck' : c === '=' || c === '-' ? 'h-s3' : 'h-sh');
+    let cols = 0, stars = [], f = 0, sx = 0, bolts = [];
+    const measure = () => {
+      const probe = document.createElement('span');
+      probe.textContent = '0'.repeat(40);
+      pre.textContent = ''; pre.appendChild(probe);
+      const cw = probe.getBoundingClientRect().width / 40;
+      pre.removeChild(probe);
+      const n = Math.max(20, Math.floor(pre.parentNode.clientWidth / (cw || 8)));
+      if (n !== cols) {
+        cols = n; stars = [];
+        const r = rng(9);
+        for (let i = 0; i < cols * ROWS * 0.07; i++) {
+          const layer = r() < 0.55 ? 0 : r() < 0.7 ? 1 : 2;
+          stars.push({ x: r() * cols, y: Math.floor(r() * ROWS), layer });
+        }
+        if (reduced) sx = Math.floor(cols * 0.35);
+      }
+    };
+    const frame = () => {
+      const N = cols * ROWS, ch = new Array(N).fill(' '), cl = new Array(N).fill('');
+      const put = (x, y, c, k) => { x = Math.round(x); if (x >= 0 && x < cols && y >= 0 && y < ROWS && c !== ' ') { ch[y * cols + x] = c; cl[y * cols + x] = k; } };
+      for (const s of stars) put(s.x, s.y, '.+*'[s.layer], ['h-s1', 'h-s2', 'h-s3'][s.layer]);
+      const tx = sx + 26 + Math.round(Math.sin(f / 9) * 3), ty = 2 + Math.round(Math.sin(f / 13));
+      TIE.forEach((row, j) => [...row].forEach((c, i) => put(tx + i, ty + j, c, c === 'o' ? 'h-lz' : 'h-tie')));
+      for (const b of bolts) { put(b.x, b.y, '-', 'h-lz'); put(b.x + 1, b.y, '-', 'h-lz'); }
+      SHIP.forEach((row, j) => [...row].forEach((c, i) => put(sx + i, 1 + j, c, shipCls(c))));
+      put(sx - 1, 3, f % 2 ? '~' : '-', 'h-fl'); put(sx - 2, 3, f % 3 ? '-' : ' ', 'h-fl');
+      pre.innerHTML = paint(ch, cl, cols, ROWS);
+    };
+    const tick = () => {
+      f++;
+      for (const s of stars) { s.x -= [0.15, 0.4, 0.9][s.layer]; if (s.x < 0) s.x += cols; }
+      sx += 0.45; if (sx > cols + 8) sx = -40;
+      if (f % 18 === 0 && sx > -12) { bolts.push({ x: sx + 7, y: 1 }); bolts.push({ x: sx + 7, y: 5 }); }
+      bolts = bolts.filter(b => (b.x += 2.2) < sx + 34 && b.x < cols);
+      frame();
+    };
+    ((document.fonts && document.fonts.ready) || Promise.resolve()).then(() => {
+      measure(); frame();
+      window.addEventListener('resize', () => { measure(); frame(); }, { passive: true });
+      if (!reduced) loop(pre, 12, tick);
+    });
+  })();
+
+  // ---- split-flap boards ----
+  // flapBoard(el, opts) turns el into a flip board; returns { set(text, {instant}) }.
+  // The real text sits in a visually hidden span; the tiles are hidden from screen readers.
+  const FLAP_CHARS = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,:/-+$%→&!?';
+  const flapBoard = (el, opts = {}) => {
+    const { length = 0, step = 90, maxSteps = 8, stagger = 45, chars = FLAP_CHARS } = opts;
+    const sr = document.createElement('span'); sr.className = 'sr-only';
+    const row = document.createElement('span'); row.className = 'flaps'; row.setAttribute('aria-hidden', 'true');
+    sr.textContent = el.textContent.trim();
+    el.textContent = ''; el.classList.add('flapboard'); el.append(sr, row);
+    const tiles = [];
+    const makeTile = () => {
+      const t = document.createElement('span'); t.className = 'flap';
+      t.innerHTML = '<span class="t"><i> </i></span><span class="b"><i> </i></span><span class="t fold"><i></i></span><span class="b fold"><i></i></span>';
+      const [top, bot, ft, fb] = t.children;
+      row.appendChild(t);
+      return { el: t, top: top.firstChild, bot: bot.firstChild, ft, fb, cur: ' ', head: ' ', path: [], busy: false };
+    };
+    const show = (tile, c) => { tile.cur = tile.head = c; tile.top.textContent = tile.bot.textContent = c; };
+    const flip = (tile, next) => {
+      const half = step / 2;
+      tile.head = next;
+      tile.ft.firstChild.textContent = tile.cur;
+      tile.fb.firstChild.textContent = next;
+      tile.top.textContent = next;
+      tile.el.classList.add('flipping');
+      const a = tile.ft.animate([{ transform: 'rotateX(0deg)', filter: 'brightness(1)' }, { transform: 'rotateX(-90deg)', filter: 'brightness(1.5)' }],
+        { duration: half, easing: 'ease-in', fill: 'both' });
+      const b = tile.fb.animate([{ transform: 'rotateX(90deg)', filter: 'brightness(0.45)' }, { transform: 'rotateX(0deg)', filter: 'brightness(1)' }],
+        { duration: half, delay: half, easing: 'ease-out', fill: 'both' });
+      return b.finished.catch(() => {}).then(() => {
+        tile.cur = next; tile.bot.textContent = next;
+        tile.el.classList.remove('flipping'); a.cancel(); b.cancel();
+      });
+    };
+    const run = async tile => {
+      if (tile.busy) return;
+      tile.busy = true;
+      while (tile.path.length) await flip(tile, tile.path.shift());
+      tile.busy = false;
+    };
+    // walk forward around the character drum like a real board; long walks keep only the last few flips
+    const plan = (from, to) => {
+      const i = chars.indexOf(from), j = chars.indexOf(to);
+      if (i < 0 || j < 0) return [to];
+      const p = [];
+      for (let k = i; k !== j;) { k = (k + 1) % chars.length; p.push(chars[k]); }
+      return p.slice(-Math.max(1, maxSteps - Math.floor(Math.random() * 3)));
+    };
+    const set = (text, { instant = false } = {}) => {
+      text = String(text).toUpperCase();
+      if (text.trim()) sr.textContent = text.trim();
+      const n = Math.max(length, text.length);
+      const s = text.padEnd(n);
+      while (tiles.length < n) tiles.push(makeTile());
+      tiles.forEach((tile, i) => {
+        const c = s[i] || ' ';
+        if (instant || reduced) { tile.path = []; if (!tile.busy) show(tile, c); else tile.path = [c]; return; }
+        if (tile.path.length ? tile.path[tile.path.length - 1] === c : tile.head === c) return;
+        tile.path = c === tile.head ? [] : plan(tile.head, c);
+        if (tile.busy) return;
+        if (stagger) setTimeout(() => run(tile), i * stagger + Math.random() * stagger); else run(tile);
+      });
+    };
+    return { set };
+  };
+
+  // hero: highlights board under the name (only flips while on screen)
+  const FEATS = [
+    'SAN DIEGO VEX WINNER',
+    'PALANTIR COFFEE CUP FINALIST',
+    'PRINCETON HACKS QUALIFIER',
+    '250+ PRS OPENED THIS YEAR',
+    '50 PRS REVIEWED THIS YEAR',
+    '5 WEBSITES BUILT THIS YEAR',
+    '20K+ VISITORS ACROSS SITES',
+    'MANAGING 3 DEV TEAMS',
+  ];
+  const featLen = Math.max(...FEATS.map(s => s.length));
+  const featBoard = flapBoard($('feats'), { length: featLen, stagger: 30 });
+  let featIdx = 0, heroOn = true;
+  // console trim: status lights + a nav-computer style counter
+  const feats = $('feats'), flapsRow = feats.querySelector('.flaps');
+  const leds = document.createElement('span'); leds.className = 'fx-leds'; leds.setAttribute('aria-hidden', 'true');
+  leds.innerHTML = '<b class="r"></b><b class="a"></b><b class="g"></b>';
+  const count = document.createElement('span'); count.className = 'fx-count'; count.setAttribute('aria-hidden', 'true');
+  feats.insertBefore(leds, flapsRow); feats.appendChild(count);
+  const pad = n => String(n).padStart(2, '0');
+  const showCount = i => { count.innerHTML = `${pad(i + 1)}/${pad(FEATS.length)}<small>NAV</small>`; };
+  showCount(0);
+  if (!reduced) {
+    leds.children[0].animate([{ opacity: 1 }, { opacity: 0.15 }], { duration: 1400, iterations: Infinity, easing: 'steps(2, jump-none)' });
+    leds.children[1].animate([{ opacity: 1 }, { opacity: 0.35 }, { opacity: 1 }], { duration: 3100, iterations: Infinity, easing: 'steps(3)' });
+  }
+  // brief hologram flicker as a new highlight comes in
+  const flicker = () => { if (!reduced) flapsRow.animate([{ opacity: 1 }, { opacity: 0.55 }, { opacity: 1 }, { opacity: 0.8 }, { opacity: 1 }], { duration: 280, easing: 'steps(4)' }); };
+  featBoard.set('', { instant: true });
+  if (reduced) featBoard.set(FEATS[0]); else setTimeout(() => { flicker(); featBoard.set(FEATS[0]); }, 1300);
+  new IntersectionObserver(([e]) => { heroOn = e.isIntersecting; }).observe(feats);
+  setInterval(() => {
+    if (!heroOn || document.hidden) return;
+    featIdx = (featIdx + 1) % FEATS.length;
+    flicker(); showCount(featIdx);
+    featBoard.set(FEATS[featIdx]);
+  }, 4500);
+
+  // project stats: flip into place once, when scrolled into view
+  const statIO = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    statIO.unobserve(e.target);
+    e.target._flap.set(e.target._final);
+  }), { threshold: 0.6 });
+  document.querySelectorAll('.stat-n').forEach(el => {
+    const final = el.textContent.trim();
+    const board = flapBoard(el, { step: 80, maxSteps: 7, stagger: 70 });
+    board.set(' '.repeat(final.length), { instant: true });
+    el.querySelector('.sr-only').textContent = final;
+    el._flap = board; el._final = final;
+    if (reduced) board.set(final); else statIO.observe(el);
+  });
 })();
 </script>
 </body>
