@@ -89,28 +89,13 @@ a.frame:hover{background:var(--saber,#3fd6f2)}
 .flap .t.fold{background:linear-gradient(#20263f,#171b33)}
 .flap .b.fold{transform:rotateX(90deg)}
 .flap.flipping .fold{display:block}
-/* hero highlights: split-flap in a cockpit-console housing (Falcon-style) */
-#feats{--fw:.8em;--fh:1.45em;--fg:.1em;position:relative;align-self:flex-start;display:inline-flex;align-items:center;gap:.55em;margin:30px 0 0;padding:.45em .55em .5em;font-family:'Geist Mono',ui-monospace,monospace;font-weight:500;font-size:clamp(10px,3.3vw,22px);color:#8ae8f9;
-  background:radial-gradient(circle at .35em .35em,#3a4160 .09em,transparent .1em),radial-gradient(circle at calc(100% - .35em) .35em,#3a4160 .09em,transparent .1em),radial-gradient(circle at .35em calc(100% - .35em),#3a4160 .09em,transparent .1em),radial-gradient(circle at calc(100% - .35em) calc(100% - .35em),#3a4160 .09em,transparent .1em),linear-gradient(#181c2b,#0d0f19);
-  border:1px solid #2e3554;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -2px 0 rgba(0,0,0,.5),0 .7em 1.5em -.5em rgba(0,0,0,.85),0 0 2.2em -.6em rgba(63,214,242,.25);
-  transform:perspective(900px) rotateY(12deg) rotateX(6deg);transform-origin:0 50%}
-#feats::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 2px,rgba(63,214,242,.05) 2px 3px)}
-#feats .flaps{padding:.18em;background:#05060c;box-shadow:inset 0 1px 3px rgba(0,0,0,.9),0 0 0 1px #1c2138}
-#feats .flap{perspective:3em;background:#060912;box-shadow:0 0 0 1px #1f3348,0 1px 0 1px #05060c,0 2px 3px 1px rgba(0,0,0,.6)}
-#feats .flap .t{background:linear-gradient(#0f1a2a,#0b1422);box-shadow:inset 0 1px 0 rgba(138,232,249,.08)}
-#feats .flap .b{background:linear-gradient(#09111d,#070c16)}
-#feats .flap .t.fold{background:linear-gradient(#132136,#0e192a)}
-#feats .flap::after{height:1px;margin-top:0;background:rgba(3,4,10,.8);box-shadow:none}
-#feats .flap i{letter-spacing:0;text-shadow:0 0 .35em rgba(63,214,242,.75),0 0 .08em rgba(138,232,249,.9)}
-.fx-leds{display:flex;flex-direction:column;gap:.22em}
-.fx-leds b{display:block;width:.32em;height:.32em;background:#2a2f44;box-shadow:inset 0 0 0 1px rgba(0,0,0,.4)}
-.fx-leds b.r{background:#ff4f6d;box-shadow:0 0 .4em #ff4f6d}
-.fx-leds b.a{background:#ffd166;box-shadow:0 0 .4em rgba(255,209,102,.8)}
-.fx-leds b.g{background:#7ee787;box-shadow:0 0 .4em rgba(126,231,135,.7)}
-.fx-count{font-size:.55em;line-height:1.2;color:#ffd166;letter-spacing:.06em;text-align:right;text-shadow:0 0 .5em rgba(255,209,102,.5)}
-.fx-count small{display:block;font-size:.8em;color:#5d6590;text-shadow:none}
-@media (max-width:560px){.fx-leds,.fx-count{display:none}}
-@media (prefers-reduced-motion: reduce){#feats{transform:none}}
+/* hero highlights: flat split-flap panel */
+#feats{--fw:.8em;--fh:1.45em;--fg:.1em;align-self:flex-start;display:inline-flex;margin:30px 0 0;padding:.3em;font-family:'Geist Mono',ui-monospace,monospace;font-weight:500;font-size:clamp(10px,3.3vw,22px);color:#8ae8f9;background:#0d0f19;border:1px solid #2e3554}
+#feats .flap{background:#0b1422;box-shadow:0 0 0 1px #1f3348}
+#feats .flap .t,#feats .flap .t.fold{background:#0f1a2a}
+#feats .flap .b{background:#0b1422}
+#feats .flap::after{height:1px;margin-top:0;background:#05060c;box-shadow:none}
+#feats .flap i{letter-spacing:0}
 .stat-n .flaps{font-size:.8em}
 </style>
 </head>
@@ -709,28 +694,13 @@ a.frame:hover{background:var(--saber,#3fd6f2)}
   const featLen = Math.max(...FEATS.map(s => s.length));
   const featBoard = flapBoard($('feats'), { length: featLen, stagger: 30 });
   let featIdx = 0, heroOn = true;
-  // console trim: status lights + a nav-computer style counter
-  const feats = $('feats'), flapsRow = feats.querySelector('.flaps');
-  const leds = document.createElement('span'); leds.className = 'fx-leds'; leds.setAttribute('aria-hidden', 'true');
-  leds.innerHTML = '<b class="r"></b><b class="a"></b><b class="g"></b>';
-  const count = document.createElement('span'); count.className = 'fx-count'; count.setAttribute('aria-hidden', 'true');
-  feats.insertBefore(leds, flapsRow); feats.appendChild(count);
-  const pad = n => String(n).padStart(2, '0');
-  const showCount = i => { count.innerHTML = `${pad(i + 1)}/${pad(FEATS.length)}<small>NAV</small>`; };
-  showCount(0);
-  if (!reduced) {
-    leds.children[0].animate([{ opacity: 1 }, { opacity: 0.15 }], { duration: 1400, iterations: Infinity, easing: 'steps(2, jump-none)' });
-    leds.children[1].animate([{ opacity: 1 }, { opacity: 0.35 }, { opacity: 1 }], { duration: 3100, iterations: Infinity, easing: 'steps(3)' });
-  }
-  // brief hologram flicker as a new highlight comes in
-  const flicker = () => { if (!reduced) flapsRow.animate([{ opacity: 1 }, { opacity: 0.55 }, { opacity: 1 }, { opacity: 0.8 }, { opacity: 1 }], { duration: 280, easing: 'steps(4)' }); };
+  const feats = $('feats');
   featBoard.set('', { instant: true });
-  if (reduced) featBoard.set(FEATS[0]); else setTimeout(() => { flicker(); featBoard.set(FEATS[0]); }, 1300);
+  if (reduced) featBoard.set(FEATS[0]); else setTimeout(() => featBoard.set(FEATS[0]), 1300);
   new IntersectionObserver(([e]) => { heroOn = e.isIntersecting; }).observe(feats);
   setInterval(() => {
     if (!heroOn || document.hidden) return;
     featIdx = (featIdx + 1) % FEATS.length;
-    flicker(); showCount(featIdx);
     featBoard.set(FEATS[featIdx]);
   }, 4500);
 
